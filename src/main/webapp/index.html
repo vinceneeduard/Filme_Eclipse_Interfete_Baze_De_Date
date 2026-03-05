@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinema Dashboard Pro</title>
+    
+    <style>
+        :root {
+            --bg-dark: #000000;
+            --bg-panel: rgba(28, 28, 30, 0.6);
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent-blue: #2997ff;
+            --accent-purple: #bf5af2;
+            --border: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --light-white: rgba(255, 255, 255, 0.15); 
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: radial-gradient(circle at 50% 100%, var(--light-white) 0%, #000000 60%);
+            background-attachment: fixed;
+        }
+
+        .dashboard-container {
+            width: 90%;
+            max-width: 1200px;
+            background: var(--bg-panel);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+
+        header { text-align: center; margin-bottom: 50px; }
+        
+h1 {
+    font-size: 3rem; 
+    font-weight: 700; 
+    letter-spacing: -1px;
+    background: linear-gradient(180deg, #fff, #b3b3b3);
+    
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    
+    background-clip: text; 
+    
+    margin-bottom: 10px;
+}
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 30px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .card-header { text-align: center; margin-bottom: 20px; }
+
+        /* ICONIȚE STATICE ȘI SIMPLE */
+        .icon { 
+            font-size: 3.5rem; 
+            margin-bottom: 20px; 
+            display: block;
+            line-height: 1;
+        }
+
+        .card-title { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; }
+        .card-desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 25px; }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            transition: opacity 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn:hover { opacity: 0.8; }
+
+        .btn-view {
+            background: rgba(41, 151, 255, 0.1);
+            color: var(--accent-blue);
+            border: 1px solid rgba(41, 151, 255, 0.2);
+        }
+
+        .btn-edit {
+            background: rgba(191, 90, 242, 0.1);
+            color: var(--accent-purple);
+            border: 1px solid rgba(191, 90, 242, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .dashboard-container { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <header>
+            <h1>Panou de administrare</h1>
+        </header>
+
+        <div class="grid-layout">
+            <div class="card">
+                <div class="card-header">
+                    <span class="icon">🎬</span>
+                    <div class="card-title">Filme</div>
+                    <div class="card-desc">Catalogul complet de titluri.</div>
+                </div>
+                <div class="action-buttons">
+                    <a href="tabela_Filme.jsp" class="btn btn-view">Vizualizare</a>
+                    <a href="modifica_Filme.jsp" class="btn btn-edit">Modificare</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="icon">🗂️</span>
+                    <div class="card-title">Categorii</div>
+                    <div class="card-desc">Gestionarea genurilor cinematografice.</div>
+                </div>
+                <div class="action-buttons">
+                    <a href="tabela_Categorii.jsp" class="btn btn-view">Vizualizare</a>
+                    <a href="modifica_Categorii.jsp" class="btn btn-edit">Modificare</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="icon">🔗</span>
+                    <div class="card-title">Încadrări</div>
+                    <div class="card-desc">Asocieri între filme și categorii.</div>
+                </div>
+                <div class="action-buttons">
+                    <a href="tabela_Incadrare_Filme.jsp" class="btn btn-view">Vizualizare</a>
+                    <a href="modifica_Incadrare_Filme.jsp" class="btn btn-edit">Modificare</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
